@@ -1,0 +1,249 @@
+TASK 10: CRUD operations in Document databases				CO3, S3
+
+Perform Mongoose using NPM design on MongoDB designing document database and performing CRUD operations like creating, inserting, querying, finding, removing operations. 
+AIM:
+To Perform Mongoose using NPM design on MongoDB designing document database and performing CRUD operations like creating, inserting, querying, finding, removing operations
+STEPS:
+Step 1)install Mongo db using following link
+https://www.mongodb.com/try/download/community
+Step 2)install Mongosh using the below link
+https://www.mongodb.com/docs/mongodb-shell/#download-and-install-mongosh
+Step 3)To add the MongoDB Shell binary's location to your PATH environment variable:
+Open the Control Panel.
+In the System and Security category, click System.
+Click Advanced system settings. The System Properties modal displays.
+Click Environment Variables.
+In the System variables section, select path and click Edit. The Edit environment variable modal displays.
+Click New and add the filepath to your mongosh binary.
+Click OK to confirm your changes. On each other modal, click OK to confirm your changes.
+To confirm that your PATH environment variable is correctly configured to find mongosh, open a command prompt and enter the mongosh --help command. 
+If your PATH is configured correctly, a list of valid commands displays.
+
+Step 4)Open mongo shell 4.0 from c:\programfiles\mongoDB\server\bin\mongod.exe
+
+Step 5)Type the CRUD(CREATE READ UPDATE DELETE) COMMANDS GIVEN IN TEXT FILE.
+
+CRUD OPERATIONS:
+
+ db.createCollection("mylab")
+{ "ok" : 1 }
+> db.mylab.insertOne({item:"canvas",qty:100,tags:["cotton"],size:{h:28,w:35.5,uom:"cm"}})
+{
+"acknowledged" : true,
+"insertedId" : ObjectId("627d13acc73990c074e6397c")
+}
+> db.mylab.find({item:"canvas"})
+{ "_id" : ObjectId("627d13acc73990c074e6397c"), "item" : "canvas", "qty" : 100, "tags" : [ "cotton" ], "size" : { "h" : 28, "w" : 35.5, "uom" : "cm" } }
+> db.mylab.insertMany([{item:"journal",qty:25,tags:["blank","red"],size:{h:14,w:21,uom:"cm"}},{item:"mat",qty:85,tags:["gray"],size:{h:27.9,w:35.5,uom:"cm"}},{item:"mousepad",qty:25,tags:["gel","blue"],size:{h:19,w:22.85,uom:"cm"}}])
+{
+"acknowledged" : true,
+"insertedIds" : [
+                ObjectId("627d1598c73990c074e6397d"),
+                ObjectId("627d1598c73990c074e6397e"),
+                ObjectId("627d1598c73990c074e6397f")
+        ]
+}
+> db.mylab.find({},{item:1,qty:1})
+{ "_id" : ObjectId("627d13acc73990c074e6397c"), "item" : "canvas", "qty" : 100 }
+{ "_id" : ObjectId("627d1598c73990c074e6397d"), "item" : "journal", "qty" : 25 }
+{ "_id" : ObjectId("627d1598c73990c074e6397e"), "item" : "mat", "qty" : 85 }
+{ "_id" : ObjectId("627d1598c73990c074e6397f"), "item" : "mousepad", "qty" : 25 }
+> db.mylab.find({},{item:1,qty:1}).pretty()
+{
+"_id" : ObjectId("627d13acc73990c074e6397c"),
+"item" : "canvas",
+"qty" : 100
+}
+{
+"_id" : ObjectId("627d1598c73990c074e6397d"),
+"item" : "journal",
+"qty" : 25
+}
+{ "_id" : ObjectId("627d1598c73990c074e6397e"), "item" : "mat", "qty" : 85 }
+{
+"_id" : ObjectId("627d1598c73990c074e6397f"),
+"item" : "mousepad",
+"qty" : 25
+}
+> db.mylab.find({item:"canvas"}).pretty().sort({item:-1})
+{
+"_id" : ObjectId("627d13acc73990c074e6397c"),
+"item" : "canvas",
+"qty" : 100,
+"tags" : [
+"cotton"
+        ],
+"size" : {
+"h" : 28,
+"w" : 35.5,
+"uom" : "cm"
+        }
+}
+> db.mylab.deleteOne({item:"journal"}
+...
+...
+> db.mylab.find({},{item:1,qty:1}).pretty()
+{
+"_id" : ObjectId("627d13acc73990c074e6397c"),
+"item" : "canvas",
+"qty" : 100
+}
+{
+"_id" : ObjectId("627d1598c73990c074e6397d"),
+"item" : "journal",
+"qty" : 25
+}
+{ "_id" : ObjectId("627d1598c73990c074e6397e"), "item" : "mat", "qty" : 85 }
+{
+"_id" : ObjectId("627d1598c73990c074e6397f"),
+"item" : "mousepad",
+"qty" : 25
+}
+>
+Result:
+Thus CRUD  using NPM design on MongoDB designing document database and performing CRUD operations like creating, inserting, querying, finding, removing operations are performed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TASK 11:CRUD operations in Graph databases				CO3, S3
+
+Perform GraphQL/Neo4j graph space design for recommendation engines. Also perform CRUD operations like creating, inserting, querying, finding, deleting operations on graph spaces.
+AIM:
+
+To perform CRUD operations like creating, inserting, querying, finding, deleting operations on graph spaces.
+Create Node with Properties
+Properties are the key-value pairs using which a node stores data. You can create a node with properties 	using the CREATE clause. You need to specify these properties separated by commas within the flower 	braces “{ }”.
+Syntax
+Following is the syntax to create a node with properties.
+CREATE (node:label { key1: value, key2: value, . . . . . . . . .  }) 
+Returning the Created Node
+
+To verify the creation of the node, type and execute the following query in the dollar prompt.
+MATCH (n) RETURN n 
+Creating Relationships
+We can create a relationship using the CREATE clause. We will specify relationship within the square 	braces “[ ]” depending on the direction of the relationship it is placed between hyphen “ - ” and arrow “ → ” 	as shown in the following syntax.
+Syntax
+Following is the syntax to create a relationship using the CREATE clause.
+CREATE (node1)-[:RelationshipType]->(node2) 
+Creating a Relationship Between the Existing Nodes
+You can also create a relationship between the existing nodes using the MATCH clause.
+Syntax
+Following is the syntax to create a relationship using the MATCH clause.
+	MATCH (a:LabeofNode1), (b:LabeofNode2) 
+	 WHERE a.name = "nameofnode1" AND b.name = " nameofnode2"
+	CREATE (a)-[: Relation]->(b) 
+	RETURN a,b 
+Deleting a Particular Node
+To delete a particular node, you need to specify the details of the node in the place of “n” in the above query.
+Syntax
+Following is the syntax to delete a particular node from Neo4j using the DELETE clause.
+	MATCH (node:label {properties . . . . . . . . . .  }) 
+	DETACH DELETE node
+
+Create a graph database for student course registration, create student and dept node and insert values of properties.
+
+create(n:student{Sid: "VTU14500", 
+Sname:"John",
+deptname:"CSE" }
+)
+  OUTPUT:
+
+Added 1 label, created 1 node, set 3 properties, completed after 232 ms.
+
+Create(n:student {Sid: "VTU14501", 
+Sname:"Dharsana",
+deptname:"EEE"})
+
+OUTPUT:
+Added 1 label, created 1 node, set 3 properties, completed after 16 ms.
+
+Create(n:student { Sid: "VTU14502", 
+Sname:"vijay",
+deptname:"CSE"
+})
+
+OUTPUT:
+Added 1 label, created 1 node, set 3 properties, completed after 12 ms.
+
+Create(n:dept{deptname:"cse",deptid:"d001"})
+OUTPUT:
+Added 1 label, created 1 node, set 2 properties, completed after 72 ms.
+Select all the nodes in your database using match command
+
+match(n) return(n)
+
+OUTPUT:
+
+
+
+
+
+match(n:student) return(n)
+
+
+
+
+OUTPUT:
+
+
+
+Create relationship between student and cse .
+
+MATCH(s:student),(d:dept) WHERE s.Sname ='vijay' AND d.deptname='cse'
+CREATE(s)-[st:STUDIED_AT]->(d)
+return s,d
+
+
+OUTPUT:
+
+
+MATCH(s:student),(d:dept) WHERE s.Sname ='John' AND d.deptname='cse'
+CREATE(s)-[st:STUDIED_AT]->(d)
+return s,d
+
+OUTPUT:
+
+
+
+match(n) return(n)
+
+
+
+
+
+Delete a node from student
+
+match(n:student{Sname:'Dharsana'}) DELETE(n)
+
+OUTPUT:
+Deleted 1 node, complaeted after 10834 ms.
+
+
+
+Result:
+Thus the CRUD operations like creating, inserting, querying, finding, deleting operations on graph spaces were executed successfully.
