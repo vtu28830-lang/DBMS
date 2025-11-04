@@ -1,0 +1,32 @@
+Lab Task 8: Normalizing Databases Using Functional Dependencies up to 
+BCNF
+Objective:
+To normalize the database created in Task-2 using functional dependencies (FDs) and apply 
+normalization techniques up to BCNF (Boyce-Codd Normal Form).
+1. Apply the Functional Dependency and Normalize to 1NF 
+Step 1: Identify Functional Dependencies (FDs) 
+Consider the following relations and FDs:
+OrderTable (Order_ID, Cust_ID, Order_Date, Order_Total, Payment_Status)
+ FD1: Order_ID → Cust_ID, Order_Date, Order_Total, Payment_Status
+Customer (Cust_ID, Cust_Name, Cust_Contact, Cust_Email, Cust_Address)
+ FD2: Cust_ID → Cust_Name, Cust_Contact, Cust_Email, Cust_Address
+Menu_Item (Item_ID, Item_Name, Price, Category, Rest_ID)
+ FD3: Item_ID → Item_Name, Price, Category, Rest_ID
+Normalization to 1NF (First Normal Form)
+ Ensure that each column contains only atomic (indivisible) values.
+ Remove any repeating groups.
+ Example:
+Order_ID Cust_ID Order_Date Order_Total Payment_Status
+1
+1
+2025-01-20 800
+Paid
+2
+2
+2025-01-21 500
+Unpaid
+2. Normalize the Relations Using FD+ and α+
+ Compute FD+ (Closure of FDs) using Armstrong’s Axioms.
+ Identify minimal keys and remove redundant FDs.
+Closure for OrderTable:
+ FD+: { Order_ID → Cust_ID, Order_Date, Order_Total, Payment_Status }
